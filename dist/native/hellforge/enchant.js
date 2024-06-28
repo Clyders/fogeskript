@@ -11,18 +11,19 @@ exports.default = new structures_1.NativeFunction({
             name: "item_name",
             description: "The item name for the enchant",
             required: true,
-            type: ArgType.String,
+            type: structures_1.ArgType.String,
             rest: false,
         },
         {
             name: "enchant_name",
             description: "The enchantment name to be added in xyz item",
+            required: true,
+            type: structures_1.ArgType.String,
             rest: false,
-            type: ArgType.Number,
         },
     ],
     brackets: true,
-    execute(ctx, [description, index]) {
+    execute(ctx, [item_name, enchant_name]) {
         ctx.container.embed(0).setDescription("Successfully enchanted" + item_name + "by using" + enchant_name || null)
         return this.success()
     },
