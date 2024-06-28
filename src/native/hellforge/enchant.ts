@@ -16,13 +16,13 @@ export default new NativeFunction({
         {
             name: "enchant_name",
             description: "The enchantment name to be added in xyz item",
-            rest: false,
             required: true,
             type: ArgType.String,
+            rest: false,
         },
-    ],
-    brackets: true,
-    execute(ctx, [description, index]) {
+        ],
+        brackets: true,
+        execute(ctx, [item_name, enchant_name]) {
         ctx.container.embed(0).setDescription("Successfully enchanted" + item_name + "by using" + enchant_name || null)
         return this.success()
     },
