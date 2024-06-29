@@ -1,4 +1,5 @@
-import { ArgType, NativeFunction, Return } from "../../structures"
+import { ArgType, NativeFunction } from "../../structures"
+import { DataBase } from "@tryforge/forge.db/dist/util"
 
 export default new NativeFunction({
     name: "$enchant",
@@ -7,14 +8,14 @@ export default new NativeFunction({
     unwrap: true,
     args: [
         {
-            name: "item_name",
+            name: "name",
             description: "The item name for the enchant",
             required: true,
             type: ArgType.String,
             rest: false,
         },
         {
-            name: "enchant_name",
+            name: "value",
             description: "The enchantment name to be added in xyz item",
             required: true,
             type: ArgType.String,
@@ -22,8 +23,9 @@ export default new NativeFunction({
         },
         ],
         brackets: true,
-        execute(ctx, [item_name, enchant_name]) {
-        ctx.container.embed(0).setDescription("Successfully enchanted" + item_name + "by using" + enchant_name || null)
+      async execute(ctx, [name, value]) {
+          await DataBase.set({ name, id: ctx.user?.id, value, type: "user" });
+          ctx.container.embed(0).setDescription("Successfully enchanted " + name + " by using " + value || null).setColor(0xff02a2);
         return this.success()
     },
 })
