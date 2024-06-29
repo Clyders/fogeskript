@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+const { DataBase } = require("@tryforge/forge.db/dist/util");
 const structures_1 = require("../../structures");
 exports.default = new structures_1.NativeFunction({
     name: "$enchant",
@@ -8,14 +9,14 @@ exports.default = new structures_1.NativeFunction({
     unwrap: true,
     args: [
         {
-            name: "item_name",
+            name: "name",
             description: "The item name for the enchant",
             required: true,
             type: structures_1.ArgType.String,
             rest: false,
         },
         {
-            name: "enchant_name",
+            name: "value",
             description: "The enchantment name to be added in xyz item",
             required: true,
             type: structures_1.ArgType.String,
@@ -23,8 +24,9 @@ exports.default = new structures_1.NativeFunction({
         },
     ],
     brackets: true,
-    execute(ctx, [item_name, enchant_name]) {
-        ctx.container.embed(0).setDescription("Successfully enchanted" + item_name + "by using" + enchant_name || null)
+    async execute(ctx, [name, value]) {
+        await DataBase.set({ name, id: ctx.user?.id, value, type: "user" });
+   ctx.container.embed(0).setDescription("Successfully enchanted " + name + " by using " + value || null).setColor("ff02a2");
         return this.success()
     },
 });
