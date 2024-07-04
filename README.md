@@ -1,5 +1,23 @@
-# ForgeScript
-ForgeScript is a comprehensive package that empowers you to effortlessly interact with Discord's API. It ensures scripting remains easy to learn and consistently effective.
+# FogeSkript
+FogeSkript is a comprehensive package that empowers you to effortlessly interact with Discord's API. It ensures scripting remains easy to learn and consistently effective.
+
+## NOTE!!! ⚠️
+- This version is developed by me (Clyders) aka Aditya so it may contains bugs and a lot of new features.
+
+## nEw ThInGs:
+<strong>
+    TO-DO (Completed)
+    
+1. AI - $ai
+2. Hellforge - $enchant
+3. Time - $parseN
+4. Number - $roll (alias for $randomNumber)
+    
+    TO-DO (Planned)
+   
+1. AI - $tokens for AI usage
+2. Hellforge - $start / $pickaxe / $sword / ...
+3. Lol - $balance / $beg / $plans (alias for $premiumplans) / $botInfo / $economyStats / ...
 
 ## Index
 <strong>
