@@ -45,8 +45,16 @@ FogeSkript is a comprehensive package that empowers you to effortlessly interact
 </summary>
 
 Make sure you have <strong>node.js</strong> installed, and greater than version **v16.11.0**. Once done, run the next command in a folder (from any IDE or terminal):
+
+Original ForgeScript:
 ```bash
 npm i https://github.com/tryforge/ForgeScript.git
+```
+or (anyone only)
+
+My FogeSkript:
+```bash
+npm i https://github.com/Clyders/fogeskript/tree/dev
 ```
 
 </details>
