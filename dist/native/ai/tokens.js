@@ -7,21 +7,12 @@ const { DataBase } = require("@tryforge/forge.db/dist/util");
 const { ForgeDB } = require("@tryforge/forge.db");
 
 exports.default = new structures_1.NativeFunction({
-    name: "$ai",
+    name: "$tokens",
     version: "1.0.0",
-    description: "Use AI in FogeSkript for free",
+    description: "Tokens for $ai usage",
     unwrap: true,
-    args: [
-        {
-            name: "text",
-            description: "...",
-            required: true,
-            type: structures_1.ArgType.String,
-            rest: false,
-        },
-    ],
-    brackets: true,
-    async execute(ctx, [text]) {
+    brackets: false,
+    async execute(ctx) {
         const data = await DataBase.get({"tokens", id: ctx.user?.id, value, type: "user" }).then((x) => x?.value);
 if (data === null || data === undefined) {
     if (def) return this.successJSON(def);
@@ -43,7 +34,7 @@ if (data === null || data === undefined) {
     }
 }
 
-return this.successJSON("Tokens left:" + data);
+return this.successJSON(data);
 
 }
     },
