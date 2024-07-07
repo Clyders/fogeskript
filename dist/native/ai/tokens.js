@@ -1,8 +1,6 @@
 "use strict";
-
 Object.defineProperty(exports, "__esModule", { value: true });
-
-const { structures_1, IExtendedCompilationResult, Interpreter, NativeFunction } = require("../../structures");
+const structures_1 = require("../../structures");
 const { DataBase } = require("@tryforge/forge.db/dist/util");
 const { ForgeDB } = require("@tryforge/forge.db");
 
@@ -11,9 +9,9 @@ exports.default = new structures_1.NativeFunction({
     version: "1.0.0",
     description: "Tokens for $ai usage",
     unwrap: true,
-    brackets: false,
     async execute(ctx) {
-        const data = await DataBase.get({"tokens", id: ctx.user?.id, value, type: "user" }).then((x) => x?.value);
+        const name = "tokens";
+        const data = await DataBase.get({name, id: ctx.user?.id, value, type: "user" }).then((x) => x?.value);
 if (data === null || data === undefined) {
     if (def) return this.successJSON(def);
     else if (ForgeDB.defaults && name in ForgeDB.defaults) {
@@ -39,4 +37,4 @@ return this.successJSON(data);
 }
     },
 );
-//# sourceMappingURL=ai.js.map
+//# sourceMappingURL=tokens.js.map
