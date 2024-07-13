@@ -1,5 +1,5 @@
 import { ArgType, NativeFunction } from "../../structures"
-
+import { DataBase } from "@tryforge/forge.db/dist/util"
 
 export default new NativeFunction({
     name: "$ai",
@@ -18,11 +18,23 @@ export default new NativeFunction({
         brackets: true,
       async execute(ctx, [text]) {
 
-    const response = await fetch('https://api.kastg.xyz/api/ai/chatgptV4?prompt=' + text);
-    const data = await response.json();
+          const name = "tokens";
+          function subtractNumber(value: number, amount: number): number {
+                  return value - amount; 
+                }
+          const data2 = await DataBase.get({ name, id: ctx.user?.id, type: "user" }).then((x) => x?.value);
+          
+          if (data2 === undefined || data2 === 0) {
+            return this.success("You have no tokens left, get back tomorrow");
+          } else {
+            let value: number = data2 !== undefined ? subtractNumber(Number(data2), 100) : 0;
+            await DataBase.set({ name, id: ctx.user?.id, value, type: "user" });
 
-    const responseText = data.result[0].response;
+            const response = await fetch('https://api.kastg.xyz/api/ai/chatgptV4?prompt=' + text);
+            const data = await response.json();
 
-        return this.success(responseText);
+            const responseText: string = data.result[0].response;
+            return this.success(responseText);
+          }
     },
 })
