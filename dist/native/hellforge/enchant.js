@@ -1,33 +1,58 @@
 "use strict";
+
 Object.defineProperty(exports, "__esModule", { value: true });
-const { DataBase } = require("@tryforge/forge.db/dist/util");
+
 const structures_1 = require("../../structures");
+const { StringSelectMenuBuilder } = require("discord.js");
+
 exports.default = new structures_1.NativeFunction({
     name: "$enchant",
     version: "1.0.0",
-    description: "Enchants a item and set the value",
+    description: "Enchants a random pickaxe/sword",
     unwrap: true,
     args: [
         {
             name: "name",
-            description: "The item name for the enchant",
-            required: true,
-            type: structures_1.ArgType.String,
-            rest: false,
-        },
-        {
-            name: "value",
-            description: "The enchantment name to be added in xyz item",
+            description: "Which thing to enchant",
             required: true,
             type: structures_1.ArgType.String,
             rest: false,
         },
     ],
     brackets: true,
-    async execute(ctx, [name, value]) {
-        await DataBase.set({ name, id: ctx.user?.id, value, type: "user" });
-   ctx.container.embed(0).setDescription("Successfully enchanted " + name + " by using " + value || null).setColor("ff02a2");
-        return this.success()
+    execute(ctx, [name]) {
+        if (name === "pickaxe") {
+            const texts = ["lol", "yo", "L"];
+            const rnd = texts[Math.floor(Math.random() * texts.length)];
+
+            // Ensure ctx.container.embed is a valid method and embed is correctly set up
+            ctx.container.embed(0).setDescription("Select the Pickaxe from the menu" || null).setColor(0xff02a2);
+
+            const menu = new StringSelectMenuBuilder()
+                .setCustomId("pic-$authorID")
+                .setDisabled(false)
+                .setPlaceholder("...")
+                .setMinValues(1)
+                .setMaxValues(1);
+
+            // Ensure ctx.container.components.at(-1) returns a valid object with addComponents method
+            ctx.container.components.at(-1)?.addComponents(menu);
+
+            const comp = ctx.container.components.at(-1)?.components[0];
+
+            const data = {
+                label: rnd,
+                description: "bro",
+                value: "L",
+                default: false,
+            };
+
+            // Check if comp is valid and has addOptions method
+            if (comp && "addOptions" in comp) {
+                comp.addOptions(data);
+            }
+        }
+        return this.success();
     },
 });
 //# sourceMappingURL=enchant.js.map
