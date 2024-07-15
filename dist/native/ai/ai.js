@@ -31,10 +31,10 @@ exports.default = new structures_1.NativeFunction({
         if (data2 === undefined || data2 === 0) {
           return this.success("You have no tokens left, get back tomorrow");
         } else {
-          let value = data2 !== undefined ? subtractNumber(Number(data2), 100) : 0;
+          let value = data2 !== undefined ? subtractNumber(Number(data2), 10) : 0;
           await DataBase.set({ name, id: ctx.user?.id, value, type: "user" });
 
-          const response = await fetch('https://api.kastg.xyz/api/ai/chatgptV4?prompt=' + text);
+          const response = await fetch('https://api.kastg.xyz/api/ai/chatgptV4?prompt=- Your role: You%27re a DOCKER Pro AI, you will help users to understand docker and how to use it specifically you have done master in docker - User Message:' + text);
           const data = await response.json();
 
           const responseText = data.result[0].response;
