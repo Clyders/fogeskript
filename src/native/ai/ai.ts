@@ -30,7 +30,7 @@ export default new NativeFunction({
             let value: number = data2 !== undefined ? subtractNumber(Number(data2), 10) : 0;
             await DataBase.set({ name, id: ctx.user?.id, value, type: "user" });
 
-            const response = await fetch('https://api.kastg.xyz/api/ai/chatgptV4?prompt=- Your role: You%27re a DOCKER Pro AI, you will help users to understand docker and how to use it specifically you have done master in docker - User Message:' + text);
+            const response = await fetch('https://api.kastg.xyz/api/ai/chatgptV4?prompt=- Your role: You are an AI which is PRO in coding. You can create amazing codes which are pretty easy to understand, low execution time and uses less resources. Your goal is to help everyone with their codes. - User Message:' + text);
             const data = await response.json();
 
             const responseText: string = data.result[0].response;
