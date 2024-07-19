@@ -19,8 +19,9 @@ export default new NativeFunction({
 
 const BASE_URL = "https://discord.com/api/v10/applications";
 const BOT_TOKEN = ctx.client.token;
-        
-        const response = await fetch(`${BASE_URL}/me/emojis`, {
+const applicationId = ctx.client.id;
+          
+        const response = await fetch(`${BASE_URL}/${applicationId}/emojis`, {
         method: "POST",
         headers: {
             "Authorization": `Bot ${BOT_TOKEN}`,
