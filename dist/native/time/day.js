@@ -6,9 +6,13 @@ exports.default = new structures_1.NativeFunction({
     version: "1.2.0",
     description: "Returns current day",
     unwrap: true,
+    alias: {
+        "$date"
+    },
     output: structures_1.ArgType.Number,
     execute: function () {
-        return this.success(new Date().getDay());
+    const date = new Date();
+    return this.success(date.getDay());
     }
 });
 //# sourceMappingURL=day.js.map
