@@ -11,8 +11,8 @@ exports.default = new structures_1.NativeFunction({
     },
     output: structures_1.ArgType.Number,
     execute: function () {
-    const date = new Date();
-    return this.success(date.getDay());
+    const date = new Date();        
+    return this.success(date.getDate());
     }
 });
 //# sourceMappingURL=day.js.map
