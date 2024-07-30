@@ -42,7 +42,8 @@ const client = new core_1.ForgeClient({
 console.log("Started");
 client.commands.add({
     type: discord_js_1.Events.MessageReactionAdd,
-    code: "$sendMessage[1148816643447865415;hello] $log[$guildID bro]",
+    code: `
+$log[$getEmbeds[$channelID;$messageID]]`
 });
 client.commands.add({
     type: "webhooksUpdate",
