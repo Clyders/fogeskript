@@ -33,7 +33,7 @@ exports.default = new structures_1.NativeFunction({
     const minutes = Math.floor((difference % 3600) / 60);
     const seconds = difference % 60;
 
-    const return = `${hours}h${minutes}m${seconds}s`;
+    const result = `${hours}h${minutes}m${seconds}s`;
 
     return this.success(result);
 }
