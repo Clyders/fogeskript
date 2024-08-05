@@ -23,7 +23,7 @@ exports.default = new structures_1.NativeFunction({
         
     let cleanString = time.replace(/,| and | /g, '');
 
-    // Extract the number of minutes and seconds
+    // Extract the number of minutes, seconds and hours
     let minutes = cleanString.match(/(\d+)minute/);
     let seconds = cleanString.match(/(\d+)second/);
     let hours = cleanString.match(/(\d+)hour/);
@@ -40,7 +40,7 @@ exports.default = new structures_1.NativeFunction({
     }
       
     if (hours) {
-        result += hours[1] + 's';
+        result += hours[1] + 'h';
     }
 
     return this.success(result);
