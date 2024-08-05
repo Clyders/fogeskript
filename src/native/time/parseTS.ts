@@ -17,6 +17,8 @@ export default new NativeFunction({
         ],
         brackets: true,
       execute(ctx, [timestamp]) {
+
+
     const currentTime = Math.floor(Date.now() / 1000);
     let difference = timestamp - currentTime;
 
@@ -29,7 +31,7 @@ export default new NativeFunction({
     const minutes = Math.floor((difference % 3600) / 60);
     const seconds = difference % 60;
 
-    const return = `${hours}h${minutes}m${seconds}s`;
+    const result = `${hours}h${minutes}m${seconds}s`;
 
     return this.success(result);
 
