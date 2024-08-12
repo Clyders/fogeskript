@@ -29,4 +29,4 @@ jobs:
       - name: Login & Publish
         run: |
           npm login clyders Aditya@2424,
-          npm publish.
+          npm publish
