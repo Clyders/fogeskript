@@ -5,9 +5,6 @@ export default new NativeFunction({
     version: "1.2.0",
     description: "Returns current day/date",
     unwrap: true,
-    alias: {
-        "$date"
-           },
     output: ArgType.Number,
     execute: function() {
     const date = new Date();        
