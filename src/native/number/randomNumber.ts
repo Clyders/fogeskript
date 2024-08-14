@@ -7,6 +7,9 @@ export default new NativeFunction({
     unwrap: true,
     output: ArgType.Number,
     brackets: true,
+    aliases: [
+        "$roll",
+    ],
     args: [
         {
             name: "min",
