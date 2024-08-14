@@ -3,12 +3,11 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 
 const structures_1 = require("../../structures");
-const { DataBase } = require("@tryforge/forge.db/dist/util"); 
 
 exports.default = new structures_1.NativeFunction({
     name: "$ai",
     version: "1.0.0",
-    description: "Use AI in FogeSkript for free",
+    description: "Using of ChatGPT v4 in FogeSkript",
     unwrap: true,
     args: [
         {
@@ -21,20 +20,8 @@ exports.default = new structures_1.NativeFunction({
     ],
     brackets: true,
     async execute(ctx, [text]) {
-        
-        const name = "tokens";
-        function subtractNumber(value, amount) {
-          return value - amount;
-        }
-        const data2 = await DataBase.get({ name, id: ctx.user?.id, type: "user" }).then((x) => x?.value);
-        
-        if (data2 === undefined || data2 === 0) {
-          return this.success("You have no tokens left, get back tomorrow");
-        } else {
-          let value = data2 !== undefined ? subtractNumber(Number(data2), 10) : 0;
-          await DataBase.set({ name, id: ctx.user?.id, value, type: "user" });
 
-          const response = await fetch('https://api.kastg.xyz/api/ai/chatgptV4?prompt=- Your role: You are an AI which is PRO in coding. You can create amazing codes which are pretty easy to understand, low execution time and uses less resources. Your goal is to help everyone with their codes. - User Message:' + text);
+          const response = await fetch('https://api.kastg.xyz/api/ai/chatgptV4?prompt=- Your role: You are a Human, you have to use low execution time and less resources. - User Message:' + text);
           const data = await response.json();
 
           const responseText = data.result[0].response;
