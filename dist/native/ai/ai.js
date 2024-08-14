@@ -12,7 +12,7 @@ exports.default = new structures_1.NativeFunction({
     args: [
         {
             name: "text",
-            description: "...",
+            description: "The users message",
             required: true,
             type: structures_1.ArgType.String,
             rest: false,
@@ -21,7 +21,7 @@ exports.default = new structures_1.NativeFunction({
     brackets: true,
     async execute(ctx, [text]) {
 
-          const response = await fetch('https://api.kastg.xyz/api/ai/chatgptV4?prompt=- Your role: You are a Human, you have to use low execution time and less resources. - User Message:' + text);
+          const response = await fetch('https://api.kastg.xyz/api/ai/chatgptV4?prompt=- Your role: You are a Human, you have to behave and act like humans and use low execution time. - User Message:' + text);
           const data = await response.json();
 
           const responseText = data.result[0].response;
