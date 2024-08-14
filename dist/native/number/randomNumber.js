@@ -8,6 +8,9 @@ exports.default = new structures_1.NativeFunction({
     unwrap: true,
     output: structures_1.ArgType.Number,
     brackets: true,
+    aliases: [
+        "$roll",
+    ],
     args: [
         {
             name: "min",
