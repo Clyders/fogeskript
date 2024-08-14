@@ -7,7 +7,7 @@ const { StringSelectMenuBuilder } = require("discord.js");
 
 exports.default = new structures_1.NativeFunction({
     name: "$enchant",
-    version: "1.0.0",
+    version: "1.5.0",
     description: "Enchants a random pickaxe/sword",
     unwrap: true,
     args: [
@@ -25,7 +25,6 @@ exports.default = new structures_1.NativeFunction({
             const texts = ["lol", "yo", "L"];
             const rnd = texts[Math.floor(Math.random() * texts.length)];
 
-            // Ensure ctx.container.embed is a valid method and embed is correctly set up
             ctx.container.embed(0).setDescription("Select the Pickaxe from the menu" || null).setColor(0xff02a2);
 
             const menu = new StringSelectMenuBuilder()
@@ -35,7 +34,6 @@ exports.default = new structures_1.NativeFunction({
                 .setMinValues(1)
                 .setMaxValues(1);
 
-            // Ensure ctx.container.components.at(-1) returns a valid object with addComponents method
             ctx.container.components.at(-1)?.addComponents(menu);
 
             const comp = ctx.container.components.at(-1)?.components[0];
@@ -47,7 +45,6 @@ exports.default = new structures_1.NativeFunction({
                 default: false,
             };
 
-            // Check if comp is valid and has addOptions method
             if (comp && "addOptions" in comp) {
                 comp.addOptions(data);
             }
