@@ -22,29 +22,29 @@ export default new NativeFunction({
     ],
     output: ArgType.String,
     execute(ctx, [code]) {
-    const unescapedText = code
-        .replace(/\\;/g, ';')
-        .replace(/\\]/g, ']')
-        .replace(/\\:/g, ':')
-        .replace(/\\,/g, ',')
-        .replace(/\\=/g, '=')
-        .replace(/\\&/g, '&')
-        .replace(/\\#/g, '#')
-        .replace(/\\!/g, '!')
-        .replace(/\\@/g, '@')
-        .replace(/\\$/g, '$')
-        .replace(/\\%/g, '%')
-        .replace(/\\\^/g, '^')
-        .replace(/\\\*/g, '*')
-        .replace(/\\\(/g, '(')
-        .replace(/\\\)/g, ')')
-        .replace(/\\\+/g, '+')
-        .replace(/\\\?/g, '?')
-        .replace(/\\</g, '<')
-        .replace(/\\>/g, '>')
-        .replace(/\\\|/g, '|')
-        .replace(/\\\/g, '\\');
+        const unescapedText = code
+            .replace(/\\;/g, ';')
+            .replace(/\\]/g, ']')
+            .replace(/\\:/g, ':')
+            .replace(/\\,/g, ',')
+            .replace(/\\=/g, '=')
+            .replace(/\\&/g, '&')
+            .replace(/\\#/g, '#')
+            .replace(/\\!/g, '!')
+            .replace(/\\@/g, '@')
+            .replace(/\\\$/g, '$')
+            .replace(/\\%/g, '%')
+            .replace(/\\\^/g, '^')
+            .replace(/\\\*/g, '*')
+            .replace(/\\\(/g, '(')
+            .replace(/\\\)/g, ')')
+            .replace(/\\\+/g, '+')
+            .replace(/\\\?/g, '?')
+            .replace(/\\</g, '<')
+            .replace(/\\>/g, '>')
+            .replace(/\\\|/g, '|')
+            .replace(/\\\\/g, '\\');
 
-    return this.success(unescapedText);
+        return this.success(unescapedText);
     },
 })
