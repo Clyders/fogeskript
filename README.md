@@ -4,14 +4,20 @@ FogeSkript is a comprehensive package that empowers you to effortlessly interact
 - This version is developed by me (Clyders) aka Aditya so it may contains bugs and a lot of new features.
 
 ## nEw ThInGs:
-$ai, $parseN (parse Number like 1 minutes 10 seconds into 1m10s), $roll (alias for $randomNumber)
+- $ai and $aiQuota,
+- $parseN (parse Number like 1 minutes 10 seconds into 1m10s),
+- $roll (alias for $randomNumber),
+- $unescapeCode,
+- $parseTS (parse the unix timestamps),
+and more to come.
     
 TO-DO (Planned)
    
 ```
-1. AI - $tokens for AI usage
-2. Hellforge - $start / $pickaxe / $sword / ...
-3. Lol - $balance / $beg / $plans (alias for $premiumplans) / $botInfo / $economyStats / ...
+1. Hellforge:
+- $start, $pickaxe, $sword and more...
+2. Lol:
+- $balance, $beg, plans (alias for $premiumplans), $botInfo, $economyStats and more...
 ```
 ## Main
 
