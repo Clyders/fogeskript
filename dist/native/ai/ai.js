@@ -27,7 +27,7 @@ exports.default = new structures_1.NativeFunction({
           const responseText = data.result[0].response;
           return this.success(responseText);
         }
-}
+})
     },
 );
 //# sourceMappingURL=ai.js.map
