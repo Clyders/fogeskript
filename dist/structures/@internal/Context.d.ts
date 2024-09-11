@@ -17,6 +17,26 @@ export interface IHttpOptions {
     headers: Record<string, string>;
     method: string;
 }
+export declare enum CalendarType {
+    Buddhist = "buddhist",
+    Chinese = "chinese",
+    Coptic = "coptic",
+    Dangi = "dangi",
+    Ethioaa = "ethioaa",
+    Ethiopic = "ethiopic",
+    Gregory = "gregory",
+    Hebrew = "hebrew",
+    Indian = "indian",
+    Islamic = "islamic",
+    IslamicUmalqura = "islamic-umalqura",
+    IslamicTbla = "islamic-tbla",
+    IslamicCivil = "islamic-civil",
+    IslamicRgsa = "islamic-rgsa",
+    Iso8601 = "iso8601",
+    Japanese = "japanese",
+    Persian = "persian",
+    Roc = "roc"
+}
 export type ClassType = new (...args: any[]) => any;
 export type ClassInstance<T> = T extends new (...args: any[]) => infer T ? T : never;
 export type FilterProperties<T> = {
@@ -42,6 +62,8 @@ export declare class Context {
     [props: PropertyKey]: unknown;
     executionTimestamp: number;
     http: Partial<IHttpOptions>;
+    timezone: string;
+    calendar?: CalendarType;
     container: Container;
     constructor(runtime: IRunnable);
     get client(): import("../..").ForgeClient;
@@ -61,7 +83,7 @@ export declare class Context {
     get interaction(): Interaction | null;
     get user(): User | null;
     get guild(): Guild | null;
-    get channel(): BaseChannel | import("discord.js").CategoryChannel | import("discord.js").NewsChannel | import("discord.js").StageChannel | import("discord.js").TextChannel | import("discord.js").PrivateThreadChannel | import("discord.js").PublicThreadChannel<boolean> | import("discord.js").VoiceChannel | import("discord.js").ForumChannel | import("discord.js").MediaChannel | null;
+    get channel(): BaseChannel | import("discord.js").CategoryChannel | import("discord.js").NewsChannel | import("discord.js").StageChannel | import("discord.js").TextChannel | import("discord.js").PublicThreadChannel<boolean> | import("discord.js").PrivateThreadChannel | import("discord.js").VoiceChannel | import("discord.js").ForumChannel | import("discord.js").MediaChannel | null;
     handle<Args extends [...IArg[]], Unwrap extends boolean>(fn: CompiledFunction<Args, Unwrap>, cb: ExpectCallback<Args, Unwrap>): Promise<Return>;
     alert(content: string): Promise<unknown>;
     handleNotSuccess(fn: CompiledFunction, rt: Return): boolean;
@@ -100,8 +122,8 @@ export declare class Context {
     } as K]: ClassInstance<T>; })[K] | null;
     private error;
     get getExtension(): {
-        <B extends boolean>(name: string, required?: B): B extends true ? import("..").ForgeExtension : import("..").ForgeExtension | null;
-        <T extends ClassType, B extends boolean>(type: T | string, required?: B): B extends true ? ClassInstance<T> : ClassInstance<T> | null;
+        <B extends boolean>(name: string, required?: B | undefined): B extends true ? import("..").ForgeExtension : import("..").ForgeExtension | null;
+        <T extends ClassType, B_1 extends boolean>(type: string | T, required?: B_1 | undefined): B_1 extends true ? ClassInstance<T> : ClassInstance<T> | null;
     };
     cloneEmpty(): Context;
     /**
