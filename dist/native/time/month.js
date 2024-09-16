@@ -7,12 +7,6 @@ exports.default = new structures_1.NativeFunction({
     version: "1.2.0",
     description: "Returns current month",
     unwrap: true,
-<<<<<<< HEAD
-    output: structures_1.ArgType.Number,
-    execute: function () {
-    const date = new Date();
-    return this.success(date.getMonth() + 1);
-=======
     brackets: false,
     args: [
         {
@@ -26,7 +20,6 @@ exports.default = new structures_1.NativeFunction({
     output: structures_1.ArgType.String,
     execute: async function (ctx, [format]) {
         return this.success(new Date().toLocaleString("en-US", { month: format || "numeric", timeZone: ctx.timezone, calendar: ctx.calendar }));
->>>>>>> c30059d4e196b7eef9aac0c3ce1d289c5b44bf69
     }
 });
 //# sourceMappingURL=month.js.map
