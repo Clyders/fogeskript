@@ -15,12 +15,6 @@ exports.default = new structures_1.NativeFunction({
     version: "1.2.0",
     description: "Returns current day",
     unwrap: true,
-<<<<<<< HEAD
-    output: structures_1.ArgType.Number,
-    execute: function () {
-    const date = new Date();        
-    return this.success(date.getDate());
-=======
     brackets: false,
     args: [
         {
@@ -41,7 +35,6 @@ exports.default = new structures_1.NativeFunction({
             options.weekday = format;
         }
         return this.success(new Date().toLocaleString("en-US", options));
->>>>>>> c30059d4e196b7eef9aac0c3ce1d289c5b44bf69
     }
 });
 //# sourceMappingURL=day.js.map
